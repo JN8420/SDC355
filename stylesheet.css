@@ -1,0 +1,169 @@
+/* Base Styles & Variables */
+:root {
+    --bg-color: #d1d5db; /* Light gray background for the page */
+    --card-bg: #0f2b5b; /* Dark navy for the cards */
+    --text-color: #ffffff;
+    --input-bg: #ffffff;
+    --input-text: #333333;
+}
+
+/* Light Theme Override Variables */
+body.light-theme {
+    --bg-color: #f3f4f6;
+    --card-bg: #ffffff;
+    --text-color: #111827;
+    --input-bg: #f9fafb;
+    --input-text: #111827;
+}
+
+/* Update the body tag to remove the background-color */
+body {
+    /* removed background-color so the video shows through */
+    color: var(--text-color);
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+/* Add this new rule for the background video */
+.bg-video {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover;
+    z-index: -1; /* Pushes the video behind your content cards */
+}
+
+/* Give the videos a fixed size so the card wraps around them perfectly */
+.project-grid video {
+    width: 200px;
+    height: 120px;
+    object-fit: cover;
+    background-color: #1d4ed8; 
+    border-radius: 4px;
+}
+
+.container {
+    max-width: 800px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* Update the card rule to shrink to its content */
+.card {
+    background-color: var(--card-bg);
+    border-radius: 8px;
+    padding: 24px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: fit-content; /* Forces the box to shrink to the text size */
+    max-width: 100%; 
+    box-sizing: border-box;
+}
+
+/* Force the header to stay stretched across the top */
+.header-card {
+    width: 100%;
+}
+
+/* Add layout rules for the main wrapper to space the new cards */
+main {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.nav-links {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+    font-weight: bold;
+}
+
+.nav-links a {
+    color: var(--text-color);
+    text-decoration: none;
+}
+
+.nav-links a:hover {
+    text-decoration: underline;
+}
+
+.theme-select {
+    margin-left: auto;
+    padding: 5px;
+    border-radius: 4px;
+}
+
+/* Remove the old bottom margin from sections */
+section {
+    margin-bottom: 0;
+}
+
+h2 {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+}
+
+/* Update the project grid to use Flexbox so the videos define the card width */
+.project-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.project-grid img {
+    width: 100%;
+    height: 100px;
+    object-fit: cover;
+    background-color: #1d4ed8; /* Placeholder color for missing images */
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px;
+}
+
+/* Contact Form (Flexbox) */
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    max-width: 400px;
+}
+
+.contact-form input,
+.contact-form textarea {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    background-color: var(--input-bg);
+    color: var(--input-text);
+    font-family: monospace;
+}
+
+.contact-form button {
+    align-self: flex-start;
+    padding: 8px 16px;
+    background-color: #e5e7eb;
+    color: #000;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.contact-form button:hover {
+    background-color: #d1d5db;
+}
+
+/* Footer */
+.footer-card {
+    text-align: left;
+}

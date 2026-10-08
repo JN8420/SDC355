@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JN8420 - Project Portfolio</title>
+    <!-- Link to the external CSS file -->
+    <link rel="stylesheet" href="stylesheet.css">
+</head>
+<body class="dark-theme">
+    <!-- Background Video -->
+    <video class="bg-video" src="images/BackGround.mp4" autoplay loop muted playsinline></video>
+
+    <div class="container">
+        <!-- Header -->
+        <header class="card header-card">
+            <h1 id="welcomeMessage">Welcome, Joe!</h1>
+            <nav class="nav-links">
+                <a href="#about">About</a>
+                <a href="#projects">Projects</a>
+                <a href="#contact">Contact</a>
+                
+                <!-- Dark Theme Dropdown Menu -->
+                <select id="themeDropdown" class="theme-select">
+                    <option value="dark">Dark Theme</option>
+                    <option value="light">Light Theme</option>
+                </select>
+            </nav>
+        </header>
+
+        <!-- Main Content -->
+        <main>
+            <section id="about" class="card">
+                <h2>About Me</h2>
+                <p>Hello! Write a description about yourself here.</p>
+            </section>
+
+            <section id="projects" class="card">
+                <h2>Projects</h2>
+                <div class="project-grid">
+                    <video src="images/Project 1.mp4" autoplay loop muted playsinline></video>
+                    <video src="images/Project 2.mp4" autoplay loop muted playsinline></video>
+                    <video src="images/Project 3.mp4" autoplay loop muted playsinline></video>
+                </div>
+            </section>
+
+            <section id="contact" class="card">
+                <h2>Contact Me</h2>
+                <form action="#" method="POST" class="contact-form">
+                    <input type="text" placeholder="Your Name" required>
+                    <input type="email" placeholder="Your Email Address" required>
+                    <input type="text" placeholder="Subject" required>
+                    <textarea placeholder="Your Message" rows="5" required></textarea>
+                    <button type="submit">Submit</button>
+                </form>
+            </section>
+        </main>
+
+        <!-- Footer -->
+        <footer class="card footer-card">
+            <p>&copy; 2026 Joseph Nettleton</p>
+        </footer>
+    </div>
+
+    <!-- Link to the external JavaScript file -->
+    <script src="java.js"></script>
+</body>
+</html>
