@@ -1,18 +1,34 @@
 // --- DOM Elements ---
 const bodyElement = document.body;
 const welcomeMessage = document.getElementById('welcomeMessage');
+const mainArea = document.querySelector('main'); 
 
-// --- Visitor Welcome Prompt ---
-// Ask the user for their name as soon as the script loads
+// --- Visitor Welcome Prompt & Timed Pop-up ---
 const visitorName = prompt("Welcome! What is your name?");
+let displayName = "Visitor";
 
-// Check if they typed a name (and didn't hit cancel or leave it blank)
 if (visitorName !== null && visitorName.trim() !== "") {
-    welcomeMessage.textContent = `Welcome, ${visitorName.trim()}!`;
-} else {
-    // Fallback if they leave it blank
-    welcomeMessage.textContent = "Welcome, Visitor!"; 
+    displayName = visitorName.trim();
 }
+welcomeMessage.textContent = `Welcome, ${displayName}!`;
+
+// Dynamically create and show the pop-up right after the prompt
+const notification = document.createElement('div');
+notification.textContent = `Thank you for checking out my portfolio, ${displayName}!`;
+notification.style.backgroundColor = "#1d4ed8";
+notification.style.color = "white";
+notification.style.padding = "10px";
+notification.style.textAlign = "center";
+notification.style.borderRadius = "4px";
+notification.style.marginBottom = "15px";
+
+// Insert the notification at the top of the main area
+mainArea.insertBefore(notification, mainArea.firstChild);
+
+// Remove the pop-up after 3.5 seconds
+setTimeout(() => {
+    notification.remove();
+}, 3500);
 
 // --- Dark Mode Slider ---
 const themeToggle = document.getElementById('themeToggle');
@@ -48,15 +64,51 @@ if (projectVideos.length < 3) {
     personalProjs.style.display = 'block';
 }
 
-// --- Form Submit Interactivity ---
+// Reference and Modify Existing Elements with Selectors
+// Selects the 'About' header and 'Contact' section to change content and styles
+const aboutHeading = document.querySelector('#about h2');
+const contactSection = document.getElementById('contact');
+
+if (aboutHeading) {
+    aboutHeading.textContent = "About Me & My Journey"; // Changed content
+    aboutHeading.style.color = "#1d4ed8";               // Changed style
+}
+
+if (contactSection) {
+    contactSection.style.borderTop = "4px solid #1d4ed8"; // Added border style
+}
+
+// Add a Timed Confirmation for Form Submissions
 const submitBtn = document.getElementById('submitBtn');
 const nameInput = document.getElementById('nameInput');
+const contactForm = document.querySelector('.contact-form');
+
+// Create a paragraph element dynamically for the status message
+const formStatusMessage = document.createElement('p');
+formStatusMessage.style.fontWeight = 'bold';
+formStatusMessage.style.marginTop = '10px';
 
 submitBtn.addEventListener('click', function(event) {
+    // a. Default behavior is prevented
     event.preventDefault();
+    
     if (nameInput.value.trim() !== "") {
-        alert(`Thank you, ${nameInput.value}, your message has been sent!`);
+        // b. Display a loading/"sending message..." element
+        formStatusMessage.textContent = "Sending message...";
+        formStatusMessage.style.color = "#d97706"; // Orange color for pending
+        contactForm.appendChild(formStatusMessage);
+        
+        // c. Use setTimeout() to delay confirmation by 2-3 seconds
+        setTimeout(() => {
+            // d. Replace the loading message with the confirmation message
+            formStatusMessage.textContent = "Message sent successfully!";
+            formStatusMessage.style.color = "#16a34a"; // Green color for success
+        }, 2500); // 2.5 second delay
+        
     } else {
-        alert("Please enter your name before submitting.");
+        // Error handling if name is blank
+        formStatusMessage.textContent = "Please enter your name before submitting.";
+        formStatusMessage.style.color = "#dc2626"; // Red color for error
+        contactForm.appendChild(formStatusMessage);
     }
 });
