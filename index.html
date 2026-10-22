@@ -4,15 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>JN8420 - Project Portfolio</title>
-    <!-- Link to the external CSS file -->
     <link rel="stylesheet" href="stylesheet.css">
 </head>
 <body class="dark-theme">
-    <!-- Background Video -->
     <video class="bg-video" src="images/BackGround.mp4" autoplay loop muted playsinline></video>
 
     <div class="container">
-        <!-- Header -->
         <header class="card header-card">
             <h1 id="welcomeMessage">Welcome, Joe!</h1>
             <nav class="nav-links">
@@ -20,71 +17,77 @@
                 <a href="#projects">Projects</a>
                 <a href="#contact">Contact</a>
                 
-                <!-- Dark Theme Slider -->
                 <label class="theme-select" style="color: var(--text-color); cursor: pointer;">
                     <input type="checkbox" id="themeToggle" checked> Dark Mode
                 </label>
             </nav>
         </header>
 
-        <!-- Main Content -->
         <main>
             <section id="about" class="card">
-                <h2>About Me</h2>
-                <p>Hello! Write a description about yourself here.</p>
+                <h2>About My Project</h2>
+                <p>Coding is much like painting on a digital canvas. Each language serves as a unique brush; HTML provides the foundational sketch, CSS adds the vibrant strokes of color and style, and JavaScript brings the masterpiece to life with dynamic movement. Together, these simple strokes create a complete, interactive work of art.</p>
                 <ul id="skillsList"></ul>
-            </section>
-
-            <section id="featured-content" class="card">
-                <h2>Featured Content</h2>
-                <div id="universityResources" class="resource-box">
-                    <h3>University Resources</h3>
-                    <a href="https://www.ecpi.edu/programs/software-development-bachelor-degree" target="_blank">ECPI Software Development Program</a>
-                </div>
-                <div id="personalProjects" class="resource-box has-video-bg">
-                    <!-- The background MP4 video -->
-                    <video class="inner-bg-video" src="images/PersonalProjects.mp4" autoplay loop muted playsinline></video>
-                    <!-- The content layered on top -->
-                    <div class="box-content">
-                        <h3 class="centered-underlined-title" style="color: slategray;">Personal Projects</h3>
-                        <a href="https://github.com/" target="_blank" class="github-btn">
-                            <svg height="20" width="20" viewBox="0 0 16 16" version="1.1" aria-hidden="true">
-                                <path fill="currentColor" d="M8 0c4.42 0 8 3.58 8 8a8.013 8.013 0 0 1-5.45 7.59c-.4.08-.55-.17-.55-.38 0-.27.01-1.13.01-2.2 0-.75-.25-1.23-.54-1.48 1.78-.2 3.65-.88 3.65-3.95 0-.88-.31-1.59-.82-2.15.08-.2.36-1.02-.08-2.12 0 0-.67-.22-2.2.82-.64-.18-1.32-.27-2-.27-.68 0-1.36.09-2 .27-1.53-1.03-2.2-.82-2.2-.82-.44 1.1-.16 1.92-.08 2.12-.51.56-.82 1.28-.82 2.15 0 3.06 1.86 3.75 3.64 3.95-.23.2-.44.55-.51 1.07-.46.21-1.61.55-2.33-.66-.15-.24-.6-.83-1.23-.82-.67.01-.27.38.01.53.34.19.73.9.82 1.13.16.45.68 1.31 2.69.94 0 .67.01 1.3.01 1.49 0 .21-.15.45-.55.38A7.995 7.995 0 0 1 0 8c0-4.42 3.58-8 8-8Z"></path>
-                            </svg>
-                            View My GitHub
-                        </a>
-                    </div>
-                </div>
             </section>
 
             <section id="projects" class="card">
                 <h2>Projects</h2>
                 <div class="project-grid">
-                    <video src="images/Project 1.mp4" autoplay loop muted playsinline></video>
-                    <video src="images/Project 2.mp4" autoplay loop muted playsinline></video>
-                    <video src="images/Project 3.mp4" autoplay loop muted playsinline></video>
+                    <div class="project-item">
+                        <video src="images/Project 1.mp4" autoplay loop muted playsinline></video>
+                        <span class="project-title">HTML</span>
+                    </div>
+                    <div class="project-item">
+                        <video src="images/Project 2.mp4" autoplay loop muted playsinline></video>
+                        <span class="project-title">JavaScript</span>
+                    </div>
+                    <div class="project-item">
+                        <video src="images/Project 3.mp4" autoplay loop muted playsinline></video>
+                        <span class="project-title">CSS</span>
+                    </div>
+                    <div class="project-item">
+                        <video src="images/Project 4.mp4" autoplay loop muted playsinline></video>
+                        <span class="project-title">GitHub</span>
+                    </div>
                 </div>
             </section>
 
-            <section id="contact" class="card">
-                <h2>Contact Me</h2>
-                <form action="#" method="POST" class="contact-form">
-                    <input type="text" id="nameInput" placeholder="Your Name" required>
-                    <input type="email" placeholder="Your Email Address" required>
-                    <input type="text" placeholder="Subject" required>
-                    <textarea placeholder="Your Message" rows="5" required></textarea>
-                    <button type="submit" id="submitBtn">Submit</button>
-                </form>
-            </section>
+            <div class="bottom-row">
+                <section id="featured-content" class="card">
+                    <h2>Featured Content</h2>
+                    <div id="universityResources" class="resource-box">
+                        <h3>University Resources</h3>
+                        <a href="https://www.ecpi.edu/programs/software-development-bachelor-degree" target="_blank">ECPI Software Development Program</a>
+                    </div>
+                    <div id="personalProjects" class="resource-box has-video-bg">
+                        <video class="inner-bg-video" src="images/PersonalProjects.mp4" autoplay loop muted playsinline></video>
+                        <div class="box-content">
+                            <h3 class="centered-underlined-title" style="color: slategray;">Personal Projects</h3>
+                            <a href="https://github.com/" target="_blank" class="github-btn">
+                                View My GitHub
+                            </a>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="contact" class="card">
+                    <h2>Contact Me</h2>
+                    <form action="#" method="POST" class="contact-form">
+                        <input type="text" id="nameInput" placeholder="Your Name" required>
+                        <input type="email" placeholder="Your Email Address" required>
+                        <input type="text" placeholder="Subject" required>
+                        <textarea placeholder="Your Message" rows="5" required></textarea>
+                        <button type="submit" id="submitBtn">Submit</button>
+                    </form>
+                </section>
+            </div>
         </main>
 
-        <!-- Footer -->
         <footer class="card footer-card">
             <p>&copy; 2026 Joseph Nettleton</p>
         </footer>
     </div>
 
-    <!-- Link to the external JavaScript file -->
     <script src="java.js"></script>
 </body>
 </html>

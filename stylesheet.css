@@ -1,13 +1,11 @@
-/* Base Styles & Variables */
 :root {
-    --bg-color: #d1d5db; /* Light gray background for the page */
-    --card-bg: #0f2b5b; /* Dark navy for the cards */
+    --bg-color: #d1d5db; 
+    --card-bg: #0f2b5b; 
     --text-color: #ffffff;
     --input-bg: #ffffff;
     --input-text: #333333;
 }
 
-/* Light Theme Override Variables */
 body.light-theme {
     --bg-color: #f3f4f6;
     --card-bg: #ffffff;
@@ -16,7 +14,6 @@ body.light-theme {
     --input-text: #111827;
 }
 
-/* Update the body tag to remove the background-color */
 body {
     color: var(--text-color);
     font-family: Arial, sans-serif;
@@ -26,7 +23,6 @@ body {
     justify-content: center;
 }
 
-/* Add this new rule for the background video */
 .bg-video {
     position: fixed;
     top: 0;
@@ -37,15 +33,6 @@ body {
     z-index: -1; 
 }
 
-/* Give the videos a fixed size so the card wraps around them perfectly */
-.project-grid video {
-    width: 200px;
-    height: 120px;
-    object-fit: cover;
-    background-color: #1d4ed8; 
-    border-radius: 4px;
-}
-
 .container {
     max-width: 800px;
     width: 100%;
@@ -54,7 +41,6 @@ body {
     gap: 20px;
 }
 
-/* Update the card rule to make it transparent with a thick border */
 .card {
     background-color: transparent; 
     border: 4px solid var(--card-bg); 
@@ -66,7 +52,6 @@ body {
     box-sizing: border-box;
 }
 
-/* Add this NEW rule to put the solid background only behind the text */
 .card h1, 
 .card h2, 
 .card p, 
@@ -75,23 +60,20 @@ body {
     background-color: var(--card-bg); 
     padding: 6px 12px; 
     border-radius: 4px; 
-    width: fit-content; /* Shrinks the background to fit the text exactly */
+    width: fit-content; 
     margin-top: 5px;
     margin-bottom: 5px;
 }
 
-/* Keeps the bullet points inside the new solid background boxes */
 .card ul {
     padding-left: 0;
     list-style-position: inside; 
 }
 
-/* Force the header to stay stretched across the top */
 .header-card {
     width: 100%;
 }
 
-/* Add layout rules for the main wrapper to space the new cards */
 main {
     display: flex;
     flex-direction: column;
@@ -120,7 +102,6 @@ main {
     border-radius: 4px;
 }
 
-/* Remove the old bottom margin from sections */
 section {
     margin-bottom: 0;
 }
@@ -130,7 +111,6 @@ h2 {
     margin-bottom: 15px;
 }
 
-/* Update the project grid to use Flexbox so the videos define the card width */
 .project-grid {
     display: flex;
     flex-wrap: wrap;
@@ -149,7 +129,6 @@ h2 {
     border-radius: 4px;
 }
 
-/* Contact Form (Flexbox) */
 .contact-form {
     display: flex;
     flex-direction: column;
@@ -183,12 +162,10 @@ h2 {
     background-color: #d1d5db;
 }
 
-/* Footer */
 .footer-card {
     text-align: left;
 }
 
-/* Featured Content Styles */
 .resource-box {
     background-color: var(--input-bg);
     color: var(--input-text);
@@ -236,42 +213,80 @@ h2 {
     transform: translateY(-2px); 
 }
 
-/* MP4 Background Container */
 .has-video-bg {
     position: relative;
-    overflow: hidden; /* Keeps the video from spilling outside the rounded corners */
-    min-height: 140px; /* Gives the box enough height to show the video */
+    overflow: hidden; 
+    min-height: 140px; 
     display: flex;
     justify-content: center;
-    border: none; /* Optional: removes the border to make it look cleaner */
+    border: none; 
 }
 
-/* Background Video Styling */
 .inner-bg-video {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    object-fit: cover; /* Ensures the video covers the whole box */
-    z-index: 0; /* Pushes the video to the back */
+    object-fit: cover; 
+    z-index: 0; 
 }
 
-/* Content Layer Styling */
 .box-content {
     position: relative;
-    z-index: 1; /* Pulls the text and button to the front */
+    z-index: 1; 
     display: flex;
     flex-direction: column;
-    align-items: center; /* Centers the button horizontally */
+    align-items: center; 
     width: 100%;
 }
 
-/* Centered & Underlined Title */
 .centered-underlined-title {
     text-align: center;
     text-decoration: underline;
     margin-top: 0;
-    margin-bottom: auto; /* Pushes the button lower if needed */
-    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5); /* Helps text stand out against video */
+    margin-bottom: auto; 
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5); 
+}
+
+.bottom-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    width: 100%;
+}
+
+.bottom-row .card {
+    flex: 1; 
+    min-width: 300px; 
+    margin: 0;
+}
+
+.project-item {
+    position: relative;
+    width: 200px;
+    height: 120px;
+}
+
+.project-item video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    background-color: #1d4ed8; 
+    border-radius: 4px;
+    display: block;
+}
+
+.project-title {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: var(--card-bg);
+    color: var(--text-color);
+    padding: 6px 12px;
+    border-radius: 4px;
+    font-weight: bold;
+    pointer-events: none; 
+    border: 2px solid var(--text-color);
 }
