@@ -114,19 +114,65 @@ h2 {
 .project-grid {
     display: flex;
     flex-wrap: wrap;
-    gap: 15px;
+    gap: 20px;
+    justify-content: center;
 }
 
-.project-grid img {
+.project-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 220px;
+    background-color: var(--card-bg);
+    padding: 12px;
+    border-radius: 8px;
+    border: 2px solid #1d4ed8;
+    box-sizing: border-box;
+}
+
+.project-item video,
+.project-item img {
     width: 100%;
-    height: 100px;
+    height: 120px;
     object-fit: cover;
     background-color: #1d4ed8; 
-    color: white;
-    display: flex;
-    align-items: center;
-    justify-content: center;
     border-radius: 4px;
+    display: block;
+}
+
+.project-title {
+    background-color: var(--card-bg);
+    color: var(--text-color);
+    padding: 4px 12px;
+    border-radius: 4px;
+    font-weight: bold;
+    border: 2px solid var(--text-color);
+    margin-bottom: 8px;
+}
+
+.project-summary {
+    font-size: 0.85rem;
+    text-align: center;
+    margin: 10px 0 !important;
+    padding: 4px !important;
+    line-height: 1.4;
+}
+
+.project-link {
+    margin-top: auto;
+    display: inline-block;
+    padding: 6px 12px;
+    background-color: #1d4ed8;
+    color: #ffffff;
+    text-decoration: none;
+    border-radius: 4px;
+    font-size: 0.85rem;
+    font-weight: bold;
+    transition: background-color 0.2s ease;
+}
+
+.project-link:hover {
+    background-color: #2563eb;
 }
 
 .contact-form {
@@ -262,32 +308,6 @@ h2 {
     margin: 0;
 }
 
-.project-item {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 200px;
-}
-
-.project-item video {
-    width: 100%;
-    height: 120px;
-    object-fit: cover;
-    background-color: #1d4ed8; 
-    border-radius: 4px;
-    display: block;
-}
-
-.project-title {
-    background-color: var(--card-bg);
-    color: var(--text-color);
-    padding: 4px 12px;
-    border-radius: 4px;
-    font-weight: bold;
-    border: 2px solid var(--text-color);
-    margin-bottom: 8px;
-}
-
 /* Custom Welcome Modal Styles */
 .modal-overlay {
     position: fixed;
@@ -295,7 +315,7 @@ h2 {
     left: 0;
     width: 100vw;
     height: 100vh;
-    background-color: rgba(0, 0, 0, 0.7); /* Slight transparency effect on background */
+    background-color: rgba(0, 0, 0, 0.7);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -328,55 +348,3 @@ h2 {
     background-color: #1d4ed8;
     color: #ffffff;
     border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    font-weight: bold;
-    font-size: 1rem;
-}
-
-#closeModalBtn:hover {
-    background-color: #2563eb;
-}
-
-/* Submit Button Tooltip Styles */
-.tooltip-container {
-    position: relative;
-    display: inline-block;
-    align-self: flex-start;
-}
-
-.tooltip-text {
-    visibility: hidden;
-    width: 180px;
-    background-color: #1d4ed8;
-    color: #ffffff;
-    text-align: center;
-    border-radius: 4px;
-    padding: 6px 10px;
-    position: absolute;
-    z-index: 10;
-    bottom: 125%; 
-    left: 50%;
-    transform: translateX(-50%);
-    opacity: 0;
-    transition: opacity 0.25s ease;
-    font-size: 0.85rem;
-    pointer-events: none;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
-}
-
-.tooltip-text::after {
-    content: "";
-    position: absolute;
-    top: 100%;
-    left: 50%;
-    margin-left: -5px;
-    border-width: 5px;
-    border-style: solid;
-    border-color: #1d4ed8 transparent transparent transparent;
-}
-
-.tooltip-container:hover .tooltip-text {
-    visibility: visible;
-    opacity: 1;
-}

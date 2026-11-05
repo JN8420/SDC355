@@ -1,7 +1,7 @@
 const bodyElement = document.body;
 const mainArea = document.querySelector('main'); 
 
-// 1. Custom Welcome Modal Logic (Replaces prompt)
+// 1. Custom Welcome Modal Logic
 const welcomeModal = document.getElementById('welcomeModal');
 const closeModalBtn = document.getElementById('closeModalBtn');
 
@@ -29,8 +29,6 @@ setTimeout(() => {
 
 // 2. Persist Dark Mode Preference with localStorage
 const themeToggle = document.getElementById('themeToggle');
-
-// Check for saved preference when the page loads
 const savedTheme = localStorage.getItem('theme');
 
 if (savedTheme === 'light') {
@@ -38,13 +36,11 @@ if (savedTheme === 'light') {
     bodyElement.classList.remove('dark-theme');
     themeToggle.checked = false;
 } else {
-    // Default to dark mode or apply saved 'dark' preference
     bodyElement.classList.add('dark-theme');
     bodyElement.classList.remove('light-theme');
     themeToggle.checked = true;
 }
 
-// Store preference when the user toggles Dark Mode
 themeToggle.addEventListener('change', function(event) {
     if (event.target.checked) {
         bodyElement.classList.add('dark-theme');
@@ -56,6 +52,105 @@ themeToggle.addEventListener('change', function(event) {
         localStorage.setItem('theme', 'light');
     }
 });
+
+// 3. Custom Project Objects, Session Storage & Dynamic Rendering
+const project1 = {
+    title: "HTML",
+    summary: "Built semantic web structures and accessible page layouts. Provides the core foundation for interactive web applications.",
+    imageUrl: "images/Project 1.mp4",
+    repoLink: "https://github.com/"
+};
+
+const project2 = {
+    title: "JavaScript",
+    summary: "Implemented dynamic DOM manipulation, custom modals, and web storage persistence. Brings interactivity and logic to the user interface.",
+    imageUrl: "images/Project 2.mp4",
+    repoLink: "https://github.com/"
+};
+
+const project3 = {
+    title: "CSS",
+    summary: "Designed responsive Flexbox layouts and custom dark/light theme variables. Styles the visual presentation and hover animations.",
+    imageUrl: "images/Project 3.mp4",
+    repoLink: "https://github.com/"
+};
+
+const project4 = {
+    title: "GitHub",
+    summary: "Managed source code version control, repository branching, and project documentation. Hosts live deployments and collaborative workflows.",
+    imageUrl: "images/Project 4.mp4",
+    repoLink: "https://github.com/"
+};
+
+// Array containing the newly created project objects
+const defaultProjectsArray = [project1, project2, project3, project4];
+
+// Check sessionStorage on page load
+let projectsToDisplay = [];
+const storedProjectsData = sessionStorage.getItem('portfolioProjects');
+
+if (!storedProjectsData) {
+    // If no data exists, convert array to string and store in sessionStorage
+    sessionStorage.setItem('portfolioProjects', JSON.stringify(defaultProjectsArray));
+    projectsToDisplay = defaultProjectsArray;
+} else {
+    // If data exists, retrieve and parse it using JSON.parse()
+    projectsToDisplay = JSON.parse(storedProjectsData);
+}
+
+// Select the project section container and dynamically render each project
+const projectGrid = document.querySelector('#projectGrid');
+
+if (projectGrid) {
+    projectGrid.innerHTML = ''; // Clear container before rendering
+
+    projectsToDisplay.forEach(project => {
+        // Create card container
+        const projectItem = document.createElement('div');
+        projectItem.className = 'project-item';
+
+        // Create Project Title
+        const titleEl = document.createElement('span');
+        titleEl.className = 'project-title';
+        titleEl.textContent = project.title;
+
+        // Create Visual Media (supports your existing .mp4 files or standard images)
+        let mediaEl;
+        if (project.imageUrl.toLowerCase().endsWith('.mp4')) {
+            mediaEl = document.createElement('video');
+            mediaEl.src = project.imageUrl;
+            mediaEl.autoplay = true;
+            mediaEl.loop = true;
+            mediaEl.muted = true;
+            mediaEl.playsInline = true;
+        } else {
+            mediaEl = document.createElement('img');
+            mediaEl.src = project.imageUrl;
+            mediaEl.alt = `${project.title} icon`;
+        }
+
+        // Create Brief Summary
+        const summaryEl = document.createElement('p');
+        summaryEl.className = 'project-summary';
+        summaryEl.textContent = project.summary;
+
+        // Create Link to Repository
+        const linkEl = document.createElement('a');
+        linkEl.className = 'project-link';
+        linkEl.href = project.repoLink;
+        linkEl.target = '_blank';
+        linkEl.textContent = 'View Repository';
+
+        // Append all elements to the project item container
+        projectItem.appendChild(titleEl);
+        projectItem.appendChild(mediaEl);
+        projectItem.appendChild(summaryEl);
+        projectItem.appendChild(linkEl);
+
+        // Append project item to the DOM project grid
+        projectGrid.appendChild(projectItem);
+    });
+}
 
 // Skills List Generation
 const skills = [
@@ -81,7 +176,8 @@ skills.forEach(skill => {
     skillsList.appendChild(li);
 });
 
-const projectVideos = document.querySelectorAll('#projects .project-grid video');
+// Check rendered project count for Featured Content visibility
+const projectVideos = document.querySelectorAll('#projects .project-grid video, #projects .project-grid img');
 const uniResources = document.getElementById('universityResources');
 const personalProjs = document.getElementById('personalProjects');
 
