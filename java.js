@@ -1,13 +1,22 @@
 const bodyElement = document.body;
 const mainArea = document.querySelector('main'); 
 
-// 1. Custom Welcome Modal Logic
+// 1. Custom Welcome Modal Logic & Audio Trigger
 const welcomeModal = document.getElementById('welcomeModal');
 const closeModalBtn = document.getElementById('closeModalBtn');
+const bgAudio = document.getElementById('bgAudio');
 
 if (closeModalBtn && welcomeModal) {
     closeModalBtn.addEventListener('click', function() {
         welcomeModal.style.display = 'none';
+        
+        // Starts playing your .m4a audio at 50% volume the moment "Close" is clicked
+        if (bgAudio) {
+            bgAudio.volume = 0.25; // Sets volume to 50%
+            bgAudio.play().catch(error => {
+                console.log("Audio playback prevented:", error);
+            });
+        }
     });
 }
 
@@ -58,28 +67,28 @@ const project1 = {
     title: "HTML",
     summary: "Built semantic web structures and accessible page layouts. Provides the core foundation for interactive web applications.",
     imageUrl: "images/Project 1.mp4",
-    repoLink: "https://github.com/"
+    repoLink: "https://github.com/JN8420/SDC355"
 };
 
 const project2 = {
     title: "JavaScript",
     summary: "Implemented dynamic DOM manipulation, custom modals, and web storage persistence. Brings interactivity and logic to the user interface.",
     imageUrl: "images/Project 2.mp4",
-    repoLink: "https://github.com/"
+    repoLink: "https://github.com/JN8420/SDC355"
 };
 
 const project3 = {
     title: "CSS",
     summary: "Designed responsive Flexbox layouts and custom dark/light theme variables. Styles the visual presentation and hover animations.",
     imageUrl: "images/Project 3.mp4",
-    repoLink: "https://github.com/"
+    repoLink: "https://github.com/JN8420/SDC355"
 };
 
 const project4 = {
     title: "GitHub",
     summary: "Managed source code version control, repository branching, and project documentation. Hosts live deployments and collaborative workflows.",
     imageUrl: "images/Project 4.mp4",
-    repoLink: "https://github.com/"
+    repoLink: "https://github.com/JN8420/SDC355"
 };
 
 // Array containing the newly created project objects
@@ -139,7 +148,7 @@ if (projectGrid) {
         linkEl.className = 'project-link';
         linkEl.href = project.repoLink;
         linkEl.target = '_blank';
-        linkEl.textContent = 'View Repository';
+        linkEl.textContent = 'View Project';
 
         // Append all elements to the project item container
         projectItem.appendChild(titleEl);
