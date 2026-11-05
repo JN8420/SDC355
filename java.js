@@ -1,17 +1,19 @@
 const bodyElement = document.body;
-const welcomeMessage = document.getElementById('welcomeMessage');
 const mainArea = document.querySelector('main'); 
 
-const visitorName = prompt("Welcome! What is your name?");
-let displayName = "Visitor";
+// 1. Custom Welcome Modal Logic (Replaces prompt)
+const welcomeModal = document.getElementById('welcomeModal');
+const closeModalBtn = document.getElementById('closeModalBtn');
 
-if (visitorName !== null && visitorName.trim() !== "") {
-    displayName = visitorName.trim();
+if (closeModalBtn && welcomeModal) {
+    closeModalBtn.addEventListener('click', function() {
+        welcomeModal.style.display = 'none';
+    });
 }
-welcomeMessage.textContent = `Welcome, ${displayName}!`;
 
+// Temporary Welcome Notification Banner
 const notification = document.createElement('div');
-notification.textContent = `Thank you for checking out my portfolio, ${displayName}!`;
+notification.textContent = "Thank you for checking out my portfolio!";
 notification.style.backgroundColor = "#1d4ed8";
 notification.style.color = "white";
 notification.style.padding = "10px";
@@ -25,17 +27,37 @@ setTimeout(() => {
     notification.remove();
 }, 3500);
 
+// 2. Persist Dark Mode Preference with localStorage
 const themeToggle = document.getElementById('themeToggle');
+
+// Check for saved preference when the page loads
+const savedTheme = localStorage.getItem('theme');
+
+if (savedTheme === 'light') {
+    bodyElement.classList.add('light-theme');
+    bodyElement.classList.remove('dark-theme');
+    themeToggle.checked = false;
+} else {
+    // Default to dark mode or apply saved 'dark' preference
+    bodyElement.classList.add('dark-theme');
+    bodyElement.classList.remove('light-theme');
+    themeToggle.checked = true;
+}
+
+// Store preference when the user toggles Dark Mode
 themeToggle.addEventListener('change', function(event) {
     if (event.target.checked) {
         bodyElement.classList.add('dark-theme');
         bodyElement.classList.remove('light-theme');
+        localStorage.setItem('theme', 'dark');
     } else {
         bodyElement.classList.add('light-theme');
         bodyElement.classList.remove('dark-theme');
+        localStorage.setItem('theme', 'light');
     }
 });
 
+// Skills List Generation
 const skills = [
     { name: "HTML", link: "#projects" },
     { name: "CSS", link: "#projects" },
@@ -83,6 +105,7 @@ if (contactSection) {
     contactSection.style.borderTop = "4px solid #1d4ed8"; 
 }
 
+// Contact Form Submission Logic
 const submitBtn = document.getElementById('submitBtn');
 const nameInput = document.getElementById('nameInput');
 const contactForm = document.querySelector('.contact-form');
